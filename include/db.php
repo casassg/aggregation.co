@@ -23,21 +23,21 @@ function RealEscapeString($db, $escapestr)
  */
 
 /* $username = "root"; */
-$username = "cms";
+$username = "aggregate";
 
 /*$password = ""; */
-$password = "Abby2008";
+$password = "hola";
 
-/* $host = "localhost"; */
+ $host = "127.0.0.1"; 
 //$host = "209.17.116.156";
-$host = "205.178.137.139";
+// $host = "205.178.137.139";
 
-$dbname = "cornfedcms";
+$dbname = "aggregate";
 
 $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
 
 try {
-	$db = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8",
+	$db = new PDO("mysql:host={$host};port=3306;dbname={$dbname};charset=utf8",
 		      $username, $password, $options);
 } catch(PDOException $ex) {
 	die($ex);
