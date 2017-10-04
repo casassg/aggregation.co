@@ -21,6 +21,10 @@ nav span {
 	margin-right: 24px;
 }
 
+.itemPicture > img {
+	width: 100%;
+}
+
 /* index.php */
 #content {
 	clear: left;

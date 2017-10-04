@@ -60,37 +60,41 @@ foreach ($rows as $feed) {
 			// Insert the item in the items table
 			if ($item->get_title() == NULL) {
 
-			$insertquery =
-				"INSERT INTO items (id,feedTitle,feedLink,itemPubDate,itemLink,itemDesc) VALUES (" .
-				$feed['id'] . ",'" . 
-				$item->get_feed()->get_title() .
-				"','" .
-				$item->get_feed()->get_permalink() .
-				"','" .
-				$item->get_local_date() .
-				"','" .
-				$item->get_permalink() .
-				"','" .
-				RemoveLinks($item->get_description()) .
-				"')";
+				$insertquery =
+					"INSERT INTO items (id,feedTitle,feedLink,itemPubDate,itemLink,itemPicture,itemDesc) VALUES (" .
+					$feed['id'] . ",'" . 
+					$item->get_feed()->get_title() .
+					"','" .
+					$item->get_feed()->get_permalink() .
+					"','" .
+					$item->get_local_date() .
+					"','" .
+					$item->get_permalink() .
+					"','" .
+					ExtractIMGURL($item->get_description()) .
+					"','" .
+					RemoveLinks($item->get_description()) .
+					"')";
 
 			} else {
 
-			$insertquery =
-				"INSERT INTO items (id,feedTitle,feedLink,itemTitle,itemPubDate,itemLink,itemDesc) VALUES (" .
-				$feed['id'] . ",'" . 
-				$item->get_feed()->get_title() .
-				"','" .
-				$item->get_feed()->get_permalink() .
-				"','" .
-				$item->get_title() .
-				"','" .
-				$item->get_local_date() .
-				"','" .
-				$item->get_permalink() .
-				"','" .
-				RemoveLinks($item->get_description()) .
-				"')";
+				$insertquery =
+					"INSERT INTO items (id,feedTitle,feedLink,itemTitle,itemPubDate,itemLink,itemPicture,itemDesc) VALUES (" .
+					$feed['id'] . ",'" . 
+					$item->get_feed()->get_title() .
+					"','" .
+					$item->get_feed()->get_permalink() .
+					"','" .
+					$item->get_title() .
+					"','" .
+					$item->get_local_date() .
+					"','" .
+					$item->get_permalink() .
+					"','".
+					ExtractIMGURL($item->get_description()) .
+					"','" .
+					RemoveLinks($item->get_description()) .
+					"')";
 
 			}
 

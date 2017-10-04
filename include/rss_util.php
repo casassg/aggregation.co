@@ -19,6 +19,18 @@ function RemoveLinks($desc)
         return $desc;
 }
 
+function ExtractIMGURL($html)
+{
+	$doc = new DOMDocument();
+	@$doc->loadHTML($html);
+
+	$tags = $doc->getElementsByTagName('img');
+
+	foreach ($tags as $tag) {
+    	return $tag->getAttribute('src');
+	}
+}
+
 /* Chronological comparison used for sorting all feed items */
 function RSS_CMP($a, $b) {
 	date_default_timezone_set("America/Denver");
@@ -107,6 +119,7 @@ function LoadCachedItems($items)
 			"feedTitle" => $feedTitle,
 			"feedLink" => $feedLink,
 			"itemTitle" => $itemTitle,
+			"itemPicture" => $row['itemPicture'],
 			"itemPubDate" => $itemPubDate,
 			"itemLink" => $itemLink,
 			"itemDesc" => $itemDesc);
